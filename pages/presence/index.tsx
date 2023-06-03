@@ -22,7 +22,7 @@ export default function Presence() {
         <h1>Lista dos que vão vir</h1>
 
         <div className={styles.presence}>
-            {getApi && getApi.map((usr, i) => <div>
+            {getApi && getApi.map((usr, i) => <div key={i}>
                 <span>{i + 1}</span>{usr.user}
 
             </div>)}
