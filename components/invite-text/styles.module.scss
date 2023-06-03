@@ -1,0 +1,78 @@
+.drawingText {
+    color: black;
+    margin-top: 30vh;
+    font-weight: bolder;
+    font-size: 1.25rem;
+
+    @media (min-width:768px) {
+        font-size: 1.5rem;
+
+    }
+
+}
+
+
+
+.showContent {
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    b {
+        font-weight: 900;
+    }
+
+    opacity: 0;
+    animation-name: showContent;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes showContent {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.presenceButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+        justify-content: center;
+
+    }
+
+    button {
+        border: 1px solid black;
+        background-color: white;
+        padding-inline: 3rem;
+        padding-block: 1rem;
+        margin-block: 1rem;
+        -webkit-transition: all 0.2s;
+
+        font-weight: 900;
+        cursor: pointer;
+
+
+        &:nth-child(2) {
+            font-size: 0.5rem;
+        }
+
+        &:nth-child(1) {
+            font-size: 1.2rem;
+        }
+
+        &:hover {
+
+            &:nth-child(1) {
+                background-color: green;
+                color: white;
+            }
+        }
+    }
+}

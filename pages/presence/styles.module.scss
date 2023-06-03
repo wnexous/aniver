@@ -1,0 +1,12 @@
+.presence {
+
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    div {
+        display: flex;
+        gap: 1rem;
+    }
+
+}

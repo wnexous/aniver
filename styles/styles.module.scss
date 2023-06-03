@@ -1,0 +1,16 @@
+.happyImage {
+    position: absolute;
+    bottom: 0;
+
+    z-index: -1;
+
+    @media (max-width: 768px) {
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        display: flex;
+        justify-content: center;
+
+    }
+}
