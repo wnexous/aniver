@@ -13,7 +13,7 @@ interface inviteCardProps {
 
 export default function InviteText(props: inviteCardProps) {
 
-    const TEXT_TO_WRITE = "Você foi convidado à participar do aniversário de 20 anos do André Dal Negro."
+    const TEXT_TO_WRITE = "Você foi convidado a participar do aniversário de 20 anos do André Dal Negro."
     const SPLITED_TEXT = TEXT_TO_WRITE.split("")
     const DELAY_BETWEEN_WORDS = 100
 
