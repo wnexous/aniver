@@ -20,6 +20,7 @@ export default function Home() {
   }) => {
     localStorage.setItem("name", name)
     localStorage.setItem("hash", hash)
+    setUsername(name)
     setHasConfirm(true)
   }
   useEffect(() => {
