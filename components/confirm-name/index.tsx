@@ -33,7 +33,7 @@ export default function ConfirmName(props: confirmNameProps) {
             <p>Por favor, insira seu nome no campo abaixo</p>
             <input value={name} onChange={change => {
 
-                const Value = change.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').substring(0, 48)
+                const Value = change.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').substring(0, 64)
                 setName(Value)
                 setShowBtn(Value.length > 0)
 
