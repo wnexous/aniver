@@ -13,7 +13,7 @@ export default function Presence() {
             })
     }, [])
     return <section>
-        <h1>Lista dos que vão vir</h1>
+        <h1>Lista dos que vão vir - {getApi?.length || 0} convidados</h1>
         <div className={styles.presence}>
             {getApi && getApi.map((usr, i) => <div key={i}>
                 <span>{i + 1}</span>{usr.username}

@@ -5,31 +5,37 @@ import styles from "../styles/styles.module.scss"
 import { useEffect, useState } from 'react'
 import ConfirmName from '@/components/confirm-name'
 import HasConfirm from '@/components/has-confirm'
+import axios from 'axios'
+import LoadingScreen from '@/components/loading'
 
 export default function Home() {
 
   const [confirm, setConfirm] = useState<boolean>(false)
-
   const [hasConfirm, setHasConfirm] = useState<boolean>(false)
-  const [username, serUsername] = useState<string>("")
+  const [loadingApi, setLoadingApi] = useState<boolean>(false)
+  const [username, setUsername] = useState<string>("")
 
   const addValues = ({
     hash = "", name = ""
   }) => {
     localStorage.setItem("name", name)
     localStorage.setItem("hash", hash)
-
     setHasConfirm(true)
   }
   useEffect(() => {
-
     const getName = localStorage.getItem("name")
     const getHash = localStorage.getItem("hash")
 
-    setHasConfirm(!!getName && !!getHash)
+    if (!!getName && !!getHash) {
+      axios.get("/api/aniver?userid=" + getHash).then(data => {
+        if (data.data.isFind) {
+          setHasConfirm(data.data.isFind)
+          !!getName && !!getHash && (setUsername(data.data.username))
+        }
 
-    !!getName && !!getHash && (serUsername(getName))
-
+        setLoadingApi(true)
+      })
+    }
   }, [])
 
 
@@ -45,18 +51,20 @@ export default function Home() {
       <main >
 
         <section>
-          {hasConfirm ?
-            (<HasConfirm name={username} />) :
-            !confirm
-              ? (<InviteText onConfirm={() => { setConfirm(true) }} />)
-              : (<ConfirmName onConfirm={nome => { addValues(nome) }} />)
+          {
+            loadingApi ? (
+              hasConfirm ?
+                (<HasConfirm name={username} />) :
+                !confirm
+                  ? (<InviteText onConfirm={() => { setConfirm(true) }} />)
+                  : (<ConfirmName onConfirm={nome => { addValues(nome) }} />))
+              :
+              (<LoadingScreen />)
 
           }
         </section>
 
-        <div className={styles.happyImage} >
-          <Image width={300} height={300} loading="lazy" src={"/images/happy.jpg"} alt="imagem de aniversario"></Image>
-        </div>
+        <Image className={styles.happyImage} width={300} height={300} loading="lazy" src={"/images/happy.jpg"} alt="imagem de aniversario"></Image>
 
       </main>
     </>
