@@ -33,8 +33,11 @@ export default function Home() {
           !!getName && !!getHash && (setUsername(data.data.username))
         }
 
-        setLoadingApi(true)
       })
+      setLoadingApi(true)
+    }
+    else {
+      setLoadingApi(true)
     }
   }, [])
 
