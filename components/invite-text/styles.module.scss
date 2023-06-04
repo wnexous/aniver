@@ -1,11 +1,14 @@
 .drawingText {
     color: black;
-    margin-top: 30vh;
     font-weight: bolder;
     font-size: 1.25rem;
+    margin-top: 10rem;
 
     @media (min-width:768px) {
         font-size: 1.5rem;
+        margin-top: 30vh;
+
+
 
     }
 
